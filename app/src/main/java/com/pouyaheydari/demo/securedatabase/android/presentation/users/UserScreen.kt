@@ -1,10 +1,5 @@
-package com.pouyaheydari.demo.securedatabase.android
+package com.pouyaheydari.demo.securedatabase.android.presentation.users
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,27 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pouyaheydari.demo.securedatabase.android.ui.theme.DemoSecureDatabaseAndroidTheme
-
-class MainActivity : ComponentActivity() {
-
-    private val userViewModel: UserViewModel by viewModels {
-        val applicationContext = applicationContext
-        val sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
-        val database = AppDatabase.getDatabase(applicationContext, sharedPreferences)
-        UserViewModelFactory(database.userDao())
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DemoSecureDatabaseAndroidTheme {
-                UserScreen(userViewModel)
-            }
-        }
-    }
-}
+import com.pouyaheydari.demo.securedatabase.android.domain.model.User
+import com.pouyaheydari.demo.securedatabase.android.presentation.theme.DemoSecureDatabaseAndroidTheme
 
 @Composable
 fun UserScreen(viewModel: UserViewModel) {
@@ -124,7 +100,6 @@ fun UserItem(user: User) {
 @Composable
 fun DefaultPreview() {
     DemoSecureDatabaseAndroidTheme {
-        // This is a simplified preview and won't have actual ViewModel logic
         Column(
             modifier = Modifier
                 .padding(16.dp)

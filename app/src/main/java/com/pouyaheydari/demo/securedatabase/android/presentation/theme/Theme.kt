@@ -1,6 +1,5 @@
-package com.pouyaheydari.demo.securedatabase.android.ui.theme
+package com.pouyaheydari.demo.securedatabase.android.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

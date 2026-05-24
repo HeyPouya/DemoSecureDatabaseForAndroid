@@ -1,4 +1,4 @@
-package com.pouyaheydari.demo.securedatabase.android.ui.theme
+package com.pouyaheydari.demo.securedatabase.android.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

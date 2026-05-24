@@ -1,4 +1,4 @@
-package com.pouyaheydari.demo.securedatabase.android
+package com.pouyaheydari.demo.securedatabase.android.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface UserDao {
     @Insert
-    suspend fun insertUser(user: User)
+    suspend fun insertUser(user: UserEntity)
 
     @Query("SELECT * FROM users")
-    fun getAllUsers(): Flow<List<User>>
+    fun getAllUsers(): Flow<List<UserEntity>>
 }

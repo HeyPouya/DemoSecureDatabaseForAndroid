@@ -1,12 +1,13 @@
-package com.pouyaheydari.demo.securedatabase.android
+package com.pouyaheydari.demo.securedatabase.android.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.pouyaheydari.demo.securedatabase.android.data.security.SqlCipherKeyManager
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [UserEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -15,7 +16,6 @@ abstract class AppDatabase : RoomDatabase() {
         private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context, sharedPreferences: SharedPreferences): AppDatabase {
-
             System.loadLibrary("sqlcipher")
             val sqlCipherKeyManager = SqlCipherKeyManager(sharedPreferences)
             val dbFile = context.getDatabasePath("your-db-name")

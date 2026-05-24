@@ -1,10 +1,10 @@
-package com.pouyaheydari.demo.securedatabase.android
+package com.pouyaheydari.demo.securedatabase.android.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "users")
-data class User(
+data class UserEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
     val email: String
