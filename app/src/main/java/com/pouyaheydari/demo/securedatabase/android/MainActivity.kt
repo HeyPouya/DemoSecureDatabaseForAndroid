@@ -26,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pouyaheydari.demo.securedatabase.android.ui.theme.DemoSecureDatabaseAndroidTheme
@@ -36,7 +35,6 @@ class MainActivity : ComponentActivity() {
     private val userViewModel: UserViewModel by viewModels {
         val applicationContext = applicationContext
         val sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
-        System.loadLibrary("sqlcipher") // Ensure SQLCipher is loaded
         val database = AppDatabase.getDatabase(applicationContext, sharedPreferences)
         UserViewModelFactory(database.userDao())
     }

@@ -60,9 +60,6 @@ class SqlCipherKeyManager(
             putString("encrypted_key", Base64.encodeToString(encryptedKey, Base64.NO_WRAP))
             putString("encryption_iv", Base64.encodeToString(iv, Base64.NO_WRAP))
         }
-
-        // Zero out the key in memory
-        sqlCipherKey.fill(0)
     }
 
     private fun getDecryptedSqlCipherKey(keyAlias: String, key: String, iv: String): ByteArray {
@@ -83,6 +80,6 @@ class SqlCipherKeyManager(
         val encryptedKey = sharedPreferences.getString("encrypted_key", null).orEmpty()
         val iv = sharedPreferences.getString("encryption_iv", null).orEmpty()
         val decryptedKey = getDecryptedSqlCipherKey("sqlcipher_keystore_key", encryptedKey, iv)
-        return DisposableKeySupportFactory(decryptedKey)
+        return SupportOpenHelperFactory(decryptedKey)
     }
 }
