@@ -25,9 +25,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pouyaheydari.demo.securedatabase.android.domain.model.User
 import com.pouyaheydari.demo.securedatabase.android.presentation.theme.DemoSecureDatabaseAndroidTheme
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun UserScreen(viewModel: UserViewModel) {
+fun UserScreen(viewModel: UserViewModel = koinViewModel()) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var showUsers by remember { mutableStateOf(false) }
